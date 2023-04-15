@@ -35,14 +35,33 @@ Anaconda - Python 3.7
 
 i) Using Averaging Filter
 ```Python
-
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+image1=cv2.imread('dip.jpg')
+plt.imshow(image1)
+image2=cv2.cvtColor(image1,cv2.COLOR_BGR2RGB)
+kernel=np.ones((11,11),np.float32)/121
+image3=cv2.filter2D(image2,-1,kernel)
+plt.figure(figsize=(9,9))
+plt.subplot(1,2,1)
+plt.imshow(image2)
+plt.title('original')
+plt.axis('off')
+plt.subplot(1,2,2)
+plt.imshow(image1)
+plt.imshow(image3)
+plt.title('Filtered')
+plt.axis('off')
 
 
 
 ```
 ii) Using Weighted Averaging Filter
 ```Python
-
+kernel2=np.array([[1,2,1],[2,4,2],[1,2,2]])/16
+image3=cv2.filter2D(image2,-1,kernel2)
+plt.imshow(image3
 
 
 
@@ -50,7 +69,9 @@ ii) Using Weighted Averaging Filter
 ```
 iii) Using Gaussian Filter
 ```Python
-
+kernel2=np.array([[1,2,1],[2,4,2],[1,2,2]])/16
+image3=cv2.filter2D(image2,-1,kernel2)
+plt.imshow(image3
 
 
 
@@ -60,7 +81,9 @@ iii) Using Gaussian Filter
 iv) Using Median Filter
 ```Python
 
-
+kernel3=np.array([[0,1,0],[1,-4,1],[0,1,0]])
+image3=cv2.filter2D(image2,-1,kernel3)
+plt.imshow(image3)
 
 
 
@@ -69,7 +92,9 @@ iv) Using Median Filter
 ### 2. Sharpening Filters
 i) Using Laplacian Kernal
 ```Python
-
+kernel3=np.array([[0,1,0],[1,-4,1],[0,1,0]])
+image3=cv2.filter2D(image2,-1,kernel3)
+plt.imshow(image3)
 
 
 
@@ -78,6 +103,11 @@ i) Using Laplacian Kernal
 ii) Using Laplacian Operator
 ```Python
 
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+new_image=cv2.Laplacian(image2,cv2.CV_64F)
+plt.imshow(new_image)
 
 
 
@@ -86,52 +116,28 @@ ii) Using Laplacian Operator
 
 ## OUTPUT:
 ### 1. Smoothing Filters
-</br>
+![output](1.png)
 
 i) Using Averaging Filter
-</br>
-</br>
-</br>
-</br>
-</br>
+![output](2.png)
 
 ii) Using Weighted Averaging Filter
-</br>
-</br>
-</br>
-</br>
-</br>
+![output](3.png)
 
 iii) Using Gaussian Filter
-</br>
-</br>
-</br>
-</br>
-</br>
+![output](5.png)
 
 iv) Using Median Filter
-</br>
-</br>
-</br>
-</br>
-</br>
+![output](4.png)
 
 ### 2. Sharpening Filters
 </br>
 
 i) Using Laplacian Kernal
-</br>
-</br>
-</br>
-</br>
-</br>
+![output](4.png)
 
 ii) Using Laplacian Operator
-</br>
-</br>
-</br>
-</br>
-</br>
+![output](5.png)
 
 ## Result:
 Thus the filters are designed for smoothing and sharpening the images in the spatial domain.
